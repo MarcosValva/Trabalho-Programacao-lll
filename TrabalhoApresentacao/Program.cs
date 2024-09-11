@@ -38,8 +38,20 @@ class Program
                     string modelo = Console.ReadLine();
 
                     //coleta informação dos dias que vai querer ficar com o carro
-                    Console.Write("Número de dias de aluguel: ");
-                    int dias = int.Parse(Console.ReadLine());
+                    int dias;
+                    while (true)
+                    {
+                        Console.Write("Número de dias de aluguel: ");
+                        string input = Console.ReadLine();
+                        if (int.TryParse(input, out dias) && dias > 0)
+                        {
+                            break; // Sai do loop se a entrada for válida
+                        }
+                        else
+                        {
+                            Console.WriteLine("Entrada inválida. Por favor, insira um número inteiro positivo.");
+                        }
+                    }
 
                     //calcula o total do aluguel
                     double total = aluguelCarro.CalcularCusto(dias);
